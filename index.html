@@ -1,451 +1,403 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-font="sans" data-pattern="glow">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>habibullah.net has moved to habibullah.dev</title>
-  <meta name="robots" content="noindex, follow" />
-  <link rel="canonical" href="https://habibullah.dev/" />
-  <meta http-equiv="refresh" content="5;url=https://habibullah.dev/" />
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://habibullah.dev/">
+  <meta name="theme-color" content="#07101f">
+  <link rel="icon" id="icon" href="data:,">
+  <!-- Without JavaScript the page still redirects; with it, the script below owns the countdown. -->
+  <noscript>
+    <meta http-equiv="refresh" content="5;url=https://habibullah.dev/">
+    <style>#num, #pause { display: none; }</style>
+  </noscript>
 
+  <!-- Picks a random theme before first paint, never the same one twice in a row. -->
   <script>
     (function () {
-      var themes = [
-        {
-          name: "Neon Blue",
-          value: "neon-blue",
-          vars: {
-            "--bg": "#07101f",
-            "--bg-2": "#0d1b33",
-            "--card": "rgba(255,255,255,.04)",
-            "--border": "rgba(80,160,255,.35)",
-            "--accent": "#3da5ff",
-            "--accent-2": "#7cc4ff",
-            "--on-accent": "#04101f",
-            "--text": "#e8f1ff",
-            "--muted": "#8da4c4"
-          }
-        },
-        {
-          name: "Crimson",
-          value: "crimson",
-          vars: {
-            "--bg": "#14060a",
-            "--bg-2": "#2a0b14",
-            "--card": "rgba(255,255,255,.04)",
-            "--border": "rgba(255,70,95,.38)",
-            "--accent": "#ff3b5c",
-            "--accent-2": "#ff8fa3",
-            "--on-accent": "#1a0207",
-            "--text": "#ffeaee",
-            "--muted": "#c79099"
-          }
-        },
-        {
-          name: "Cyber Purple",
-          value: "cyber-purple",
-          vars: {
-            "--bg": "#0e0720",
-            "--bg-2": "#1e0f3d",
-            "--card": "rgba(255,255,255,.04)",
-            "--border": "rgba(180,110,255,.4)",
-            "--accent": "#b46bff",
-            "--accent-2": "#e0b3ff",
-            "--on-accent": "#10051f",
-            "--text": "#f4eaff",
-            "--muted": "#a995c8"
-          }
-        },
-        {
-          name: "Emerald",
-          value: "emerald",
-          vars: {
-            "--bg": "#04120d",
-            "--bg-2": "#0a2a1e",
-            "--card": "rgba(255,255,255,.04)",
-            "--border": "rgba(40,220,150,.38)",
-            "--accent": "#22d98f",
-            "--accent-2": "#8af0c3",
-            "--on-accent": "#03140d",
-            "--text": "#e6fff4",
-            "--muted": "#86b5a0"
-          }
-        },
-        {
-          name: "Sunset Orange",
-          value: "sunset",
-          vars: {
-            "--bg": "#160a04",
-            "--bg-2": "#2e1508",
-            "--card": "rgba(255,255,255,.04)",
-            "--border": "rgba(255,140,50,.4)",
-            "--accent": "#ff8a2b",
-            "--accent-2": "#ffc08a",
-            "--on-accent": "#1c0c02",
-            "--text": "#fff1e4",
-            "--muted": "#c9a187"
-          }
-        },
-        {
-          name: "Midnight Gold",
-          value: "midnight-gold",
-          vars: {
-            "--bg": "#0a0a0f",
-            "--bg-2": "#171722",
-            "--card": "rgba(255,255,255,.04)",
-            "--border": "rgba(235,190,70,.4)",
-            "--accent": "#ebbe46",
-            "--accent-2": "#f6dc94",
-            "--on-accent": "#14110a",
-            "--text": "#fbf5e3",
-            "--muted": "#b0a88e"
-          }
-        },
-        {
-          name: "Terminal",
-          value: "terminal",
-          vars: {
-            "--bg": "#020802",
-            "--bg-2": "#06140a",
-            "--card": "rgba(255,255,255,.04)",
-            "--border": "rgba(0,255,90,.45)",
-            "--accent": "#00ff5a",
-            "--accent-2": "#7dffa8",
-            "--on-accent": "#021205",
-            "--text": "#c8ffd8",
-            "--muted": "#4fa56c"
-          }
-        },
-        {
-          name: "Arctic Cyan",
-          value: "arctic",
-          vars: {
-            "--bg": "#04141a",
-            "--bg-2": "#0a2c38",
-            "--card": "rgba(255,255,255,.04)",
-            "--border": "rgba(60,230,240,.4)",
-            "--accent": "#2fe3ee",
-            "--accent-2": "#92f4f9",
-            "--on-accent": "#03181c",
-            "--text": "#e4fcff",
-            "--muted": "#84b3ba"
-          }
-        },
-        {
-          name: "Rose Neon",
-          value: "rose",
-          vars: {
-            "--bg": "#150812",
-            "--bg-2": "#2c1026",
-            "--card": "rgba(255,255,255,.04)",
-            "--border": "rgba(255,100,200,.4)",
-            "--accent": "#ff62c4",
-            "--accent-2": "#ffa8e0",
-            "--on-accent": "#1c0616",
-            "--text": "#ffeaf7",
-            "--muted": "#c394b4"
-          }
-        }
+      // [name, background, text, accent, font]. Everything else is derived in CSS.
+      var T = [
+        ["Neon Blue", "#07101f", "#e8f1ff", "#3da5ff", "sans"],
+        ["Crimson", "#14060a", "#ffeaee", "#ff4d6a", "sans"],
+        ["Cyber Purple", "#0e0720", "#f4eaff", "#b46bff", "sans"],
+        ["Emerald", "#04120d", "#e6fff4", "#22d98f", "sans"],
+        ["Sunset", "#160a04", "#fff1e4", "#ff8a2b", "round"],
+        ["Midnight Gold", "#0a0a0f", "#fbf5e3", "#ebbe46", "serif"],
+        ["Terminal", "#020802", "#c8ffd8", "#00ff5a", "mono"],
+        ["Arctic", "#04141a", "#e4fcff", "#2fe3ee", "sans"],
+        ["Rose Neon", "#150812", "#ffeaf7", "#ff62c4", "round"],
+        ["Amber CRT", "#120c00", "#ffe9b8", "#ffb000", "mono"],
+        ["Lagoon", "#021b24", "#d9f5f0", "#2dd4bf", "round"],
+        ["Ultraviolet", "#10002b", "#efe3ff", "#c77dff", "sans"],
+        ["Lava", "#1a0500", "#ffe3d6", "#ff5722", "sans"],
+        ["Matcha Night", "#0d140a", "#eaf5dc", "#a3e635", "round"],
+        ["Nord", "#2e3440", "#eceff4", "#88c0d0", "sans"],
+        ["Dracula", "#282a36", "#f8f8f2", "#bd93f9", "mono"],
+        ["Gruvbox", "#282828", "#ebdbb2", "#fabd2f", "mono"],
+        ["Solarized", "#002b36", "#eee8d5", "#2aa198", "mono"],
+        ["Tokyo Night", "#1a1b26", "#c0caf5", "#7aa2f7", "sans"],
+        ["Mocha", "#1e1e2e", "#cdd6f4", "#f5c2e7", "round"],
+        ["Monokai", "#272822", "#f8f8f2", "#a6e22e", "mono"],
+        ["Synthwave", "#1b0a33", "#ffe9fb", "#ff3cac", "sans"],
+        ["Cherry Blossom", "#1c1018", "#ffe8f1", "#ffb7d5", "serif"],
+        ["Espresso", "#1a110c", "#f1e3d3", "#d9a066", "serif"],
+        ["Slate Mint", "#0f172a", "#e2e8f0", "#5eead4", "sans"],
+        ["Blueprint", "#0b2a4a", "#e6f0ff", "#ffd166", "mono"],
+        ["Blood Moon", "#0b0b0b", "#f2f2f2", "#ff2d2d", "sans"],
+        ["Plum Wine", "#1f0a1f", "#f9e6f9", "#e879f9", "serif"],
+        ["Forest", "#0b1a10", "#e3f2e1", "#6fcf97", "serif"],
+        ["Graphite", "#111418", "#e6e9ee", "#5b9dff", "sans"],
+        ["Paper Blue", "#f6f6f3", "#1c1c1c", "#2f5bea", "sans"],
+        ["Snow Mint", "#f2fbf7", "#0f2a22", "#077a54", "round"],
+        ["Lavender Haze", "#f4f0ff", "#21163f", "#6d3ff2", "round"],
+        ["Raspberry", "#fff2ee", "#3a1710", "#c92a5b", "sans"],
+        ["Sky Day", "#eef7ff", "#0b2540", "#0b6bcb", "sans"],
+        ["Butter", "#fffbe0", "#2b2600", "#7a5f00", "serif"],
+        ["Bubblegum", "#fff0f7", "#3a0a24", "#c01f8a", "round"],
+        ["Lime Soda", "#f6ffe5", "#1c2a00", "#4d7c0f", "sans"],
+        ["Ink", "#ffffff", "#151515", "#e11d48", "mono"],
+        ["Glacier", "#f0fbff", "#062a33", "#0e7490", "sans"],
+        ["Orchid", "#fbf0ff", "#2d0a3d", "#a21caf", "serif"],
+        ["Newsprint", "#efefe9", "#111111", "#c40000", "serif"],
+        ["Blueprint Light", "#e8f1fb", "#0b2a4a", "#1d4ed8", "mono"],
+        ["Matcha", "#eef3e2", "#1f2a14", "#3f6212", "serif"],
+        ["Electric Blue", "#1328d6", "#ffffff", "#ffe14d", "sans"],
+        ["Violet Pop", "#5b21c9", "#ffffff", "#ffe14d", "round"],
+        ["Tangerine Pop", "#ff7a1a", "#1a0a00", "#1a0a00", "sans"],
+        ["Hot Pink", "#ff7ab8", "#2a0016", "#2a0016", "round"],
+        ["Sunshine", "#ffd60a", "#1a1500", "#1a1500", "sans"],
+        ["Mint Pop", "#3ddc97", "#04281a", "#04281a", "round"],
+        ["Cobalt Lime", "#0820dc", "#ffffff", "#c6ff3d", "mono"],
       ];
-
-      var selected = themes[Math.floor(Math.random() * themes.length)];
+      var KEY = "hn-theme";
       var root = document.documentElement;
-      root.setAttribute("data-theme", selected.value);
+      var last = NaN;
 
-      Object.keys(selected.vars).forEach(function (key) {
-        root.style.setProperty(key, selected.vars[key]);
-      });
+      try { last = parseInt(localStorage.getItem(KEY), 10); } catch (e) {}
+      var i = Math.floor(Math.random() * T.length);
+      if (i === last) i = (i + 1 + Math.floor(Math.random() * (T.length - 1))) % T.length;
+      try { localStorage.setItem(KEY, i); } catch (e) {}
+
+      var t = T[i], bg = t[1], accent = t[3];
+      root.style.setProperty("--bg", bg);
+      root.style.setProperty("--fg", t[2]);
+      root.style.setProperty("--accent", accent);
+      root.style.colorScheme =
+        (parseInt(bg.slice(1, 3), 16) * 299 + parseInt(bg.slice(3, 5), 16) * 587 + parseInt(bg.slice(5, 7), 16) * 114) / 1000 > 140
+          ? "light" : "dark";
+      root.setAttribute("data-theme", t[0]);
+      root.setAttribute("data-font", t[4]);
+      root.setAttribute("data-pattern", ["glow", "grid", "dots"][Math.floor(Math.random() * 3)]);
+
+      document.querySelector("meta[name=theme-color]").content = bg;
+      document.getElementById("icon").href = "data:image/svg+xml," + encodeURIComponent(
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">' +
+        '<rect width="32" height="32" rx="9" fill="' + bg + '"/>' +
+        '<circle cx="16" cy="16" r="9" fill="none" stroke="' + accent + '" stroke-width="5"/></svg>'
+      );
     })();
   </script>
 
   <style>
     :root {
       --bg: #07101f;
-      --bg-2: #0d1b33;
-      --card: rgba(255,255,255,.04);
-      --border: rgba(80,160,255,.35);
+      --fg: #e8f1ff;
       --accent: #3da5ff;
-      --accent-2: #7cc4ff;
-      --on-accent: #04101f;
-      --text: #e8f1ff;
-      --muted: #8da4c4;
-      --font: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      --muted: color-mix(in srgb, var(--fg) 72%, var(--bg));
+      --line: color-mix(in srgb, var(--fg) 14%, var(--bg));
+      --secs: 5; /* countdown length; keep in sync with the noscript refresh above */
+      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --radius: 14px; /* button corners */
+      --tracking: -.03em; /* tracking for the big domain name */
     }
 
-    [data-theme="terminal"] {
-      --font: ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+    [data-font="mono"] {
+      --font: ui-monospace, "SF Mono", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+      --radius: 2px;
+      --tracking: -.04em;
+    }
+    [data-font="serif"] {
+      --font: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+      --radius: 6px;
+      --tracking: -.01em;
+    }
+    [data-font="round"] {
+      --font: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN", Quicksand, Nunito, system-ui, sans-serif;
+      --radius: 999px;
+      --tracking: -.02em;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
-    body {
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      background: var(--bg);
+      color: var(--fg);
       font-family: var(--font);
-      color: var(--text);
-      background: radial-gradient(ellipse at 50% 0%, var(--bg-2) 0%, var(--bg) 65%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: clamp(20px, 5vw, 48px);
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
     }
 
-    .card {
+    /* Background pattern: one of three, chosen per visit. */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+    [data-pattern="glow"] body::before {
+      background: radial-gradient(60rem 36rem at 50% 0%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 70%);
+    }
+    [data-pattern="grid"] body::before {
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at 50% 42%, #000 0, transparent 72%);
+    }
+    [data-pattern="dots"] body::before {
+      background-image: radial-gradient(var(--line) 1.5px, transparent 1.7px);
+      background-size: 26px 26px;
+      mask-image: radial-gradient(ellipse at 50% 42%, #000 0, transparent 72%);
+    }
+
+    main {
       width: 100%;
-      max-width: 500px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 34px 30px 26px;
+      max-width: 36rem;
       text-align: center;
-      box-shadow: 0 0 60px -22px var(--accent);
-      animation: rise .6s ease-out both;
-      backdrop-filter: blur(4px);
+      animation: in .5s ease-out both;
     }
 
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: none; }
-    }
+    h1 { margin: 0; font-weight: 400; }
 
-    h1 {
-      font-size: clamp(1.5rem, 2vw, 2rem);
-      font-weight: 700;
-      line-height: 1.25;
-      letter-spacing: -0.02em;
-    }
-
-    h1 .old {
+    .from {
+      display: block;
       color: var(--muted);
-      text-decoration: line-through;
-      text-decoration-thickness: 2px;
+      font-size: 1.05rem;
     }
 
-    h1 .new {
+    .to {
+      display: block;
+      margin-top: .2em;
       color: var(--accent);
-    }
-
-    .sub {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 0.98rem;
+      font-size: clamp(2.1rem, 10vw, 4rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: var(--tracking);
+      overflow-wrap: anywhere;
     }
 
     .ring {
       position: relative;
-      width: 150px;
-      height: 150px;
-      margin: 28px auto 22px;
+      width: 7.5rem;
+      aspect-ratio: 1;
+      margin: clamp(24px, 6vh, 40px) auto;
     }
-
     .ring svg {
+      display: block;
       width: 100%;
       height: 100%;
       transform: rotate(-90deg);
     }
-
-    .ring circle {
-      fill: none;
-      stroke-width: 7;
-    }
-
-    .ring .track {
-      stroke: rgba(255,255,255,.08);
-    }
-
-    .ring .bar {
+    .ring circle { fill: none; stroke-width: 5; }
+    .track { stroke: var(--line); }
+    .bar {
       stroke: var(--accent);
       stroke-linecap: round;
-      stroke-dasharray: 339.29;
-      stroke-dashoffset: 0;
-      filter: drop-shadow(0 0 6px var(--accent));
-      transition: stroke-dashoffset 1s linear;
+      stroke-dasharray: 100; /* pathLength is 100 in the markup */
+      animation: drain calc(var(--secs) * 1s) linear forwards;
     }
-
-    .count {
+    .paused .bar { animation-play-state: paused; }
+    .ring b {
       position: absolute;
       inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .count b {
-      font-size: 3.2rem;
+      display: grid;
+      place-items: center;
+      font-size: 2.5rem;
       font-weight: 700;
-      line-height: 1;
-      color: var(--accent);
       font-variant-numeric: tabular-nums;
     }
 
-    .count span {
-      font-size: .8rem;
-      color: var(--muted);
-      margin-top: 4px;
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 4px 20px;
     }
 
-    .badge {
-      display: inline-block;
-      border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--accent) 12%, transparent);
-      color: var(--accent-2);
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: .83rem;
-      font-weight: 700;
-      letter-spacing: .01em;
-    }
-
-    .btn {
-      display: block;
-      margin: 20px auto 0;
-      width: 100%;
-      padding: 14px 18px;
-      border: 0;
-      border-radius: 12px;
+    .go {
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      padding: 0 30px;
+      border-radius: var(--radius);
       background: var(--accent);
-      color: var(--on-accent);
-      font: inherit;
-      font-weight: 700;
+      color: var(--bg);
       font-size: 1rem;
-      cursor: pointer;
+      font-weight: 700;
       text-decoration: none;
-      transition: transform .15s ease, box-shadow .15s ease;
+      transition: box-shadow .15s ease;
     }
+    .go:hover { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent); }
+    .go:active { transform: translateY(1px); }
 
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px -8px var(--accent);
+    .pause {
+      min-height: 48px;
+      padding: 0 8px;
+      border: 0;
+      background: none;
+      color: var(--muted);
+      font: inherit;
+      font-size: .95rem;
+      text-decoration: underline;
+      text-underline-offset: .25em;
+      cursor: pointer;
     }
+    .pause:hover { color: var(--fg); }
 
-    .btn:focus-visible,
-    .notice a:focus-visible {
-      outline: 3px solid var(--accent-2);
+    .go:focus-visible,
+    .pause:focus-visible,
+    .note a:focus-visible {
+      outline: 3px solid var(--accent);
       outline-offset: 3px;
     }
 
-    .notice {
-      margin-top: 22px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      font-size: .88rem;
+    .note {
+      max-width: 30rem;
+      margin: clamp(28px, 6vh, 44px) auto 0;
       color: var(--muted);
-      line-height: 1.6;
+      font-size: .9rem;
+      line-height: 1.65;
+      text-wrap: balance;
     }
-
-    .notice a {
-      color: var(--accent-2);
+    .note a {
+      color: var(--accent);
       font-weight: 600;
-      text-decoration: none;
-      border-bottom: 1px dashed var(--accent-2);
+      text-underline-offset: .2em;
     }
 
-    .theme-name {
-      margin-top: 14px;
-      font-size: .75rem;
+    .theme {
+      margin: 20px 0 0;
       color: var(--muted);
-      opacity: .75;
-      letter-spacing: .02em;
+      font-size: .8rem;
     }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    @keyframes in { from { opacity: 0; transform: translateY(8px); } }
+    @keyframes drain { to { stroke-dashoffset: 100; } }
 
     @media (prefers-reduced-motion: reduce) {
-      .card { animation: none; }
-      .ring .bar { transition: none; }
+      main { animation: none; }
+      .bar { animation-timing-function: steps(var(--secs)); }
     }
   </style>
 </head>
 
 <body>
-  <main class="card">
-    <h1><span class="old">habibullah.net</span><br>is now <span class="new">habibullah.dev</span></h1>
-    <p class="sub">You’re being taken to the new address.</p>
+  <main>
+    <h1>
+      <span class="from">habibullah.net has moved to</span>
+      <span class="to">habibullah.dev</span>
+    </h1>
 
-    <div class="ring" role="timer" aria-live="polite" aria-label="Redirect countdown">
-      <svg viewBox="0 0 120 120" aria-hidden="true">
-        <circle class="track" cx="60" cy="60" r="54"></circle>
-        <circle class="bar" id="bar" cx="60" cy="60" r="54"></circle>
+    <div class="ring" aria-hidden="true">
+      <svg viewBox="0 0 100 100">
+        <circle class="track" cx="50" cy="50" r="45" pathLength="100"></circle>
+        <circle class="bar" cx="50" cy="50" r="45" pathLength="100"></circle>
       </svg>
-      <div class="count">
-        <b id="num">5</b>
-        <span>seconds</span>
-      </div>
+      <b id="num">5</b>
+    </div>
+    <p class="sr-only" id="status" role="status">Redirecting to habibullah.dev in 5 seconds.</p>
+
+    <div class="actions">
+      <a class="go" id="go" href="https://habibullah.dev/">Go now</a>
+      <button class="pause" id="pause" type="button">Pause</button>
     </div>
 
-    <span class="badge">Full ownership with habibullah.dev · 301 permanent redirect</span>
-
-    <a class="btn" id="go" href="https://habibullah.dev/">Go to habibullah.dev now</a>
-
-    <p class="notice">
+    <p class="note">
       habibullah.net is an extra domain I bought to protect my brand.
       If you have a real need for it, tell me why at
       <a href="mailto:hey@habibullah.dev">hey@habibullah.dev</a>.
     </p>
 
-    <p class="theme-name" id="themeName"></p>
-
-    <noscript>
-      <p class="notice">
-        JavaScript is off. You’ll be redirected in 5 seconds, or
-        <a href="https://habibullah.dev/">continue now</a>.
-      </p>
-    </noscript>
+    <p class="theme" id="themeName"></p>
   </main>
 
   <script>
-    var TOTAL = 5;
-    var left = TOTAL;
-    var num = document.getElementById("num");
-    var bar = document.getElementById("bar");
-    var CIRC = 2 * Math.PI * 54;
-    var TARGET_URL = "https://habibullah.dev/";
+    (function () {
+      var root = document.documentElement;
+      var num = document.getElementById("num");
+      var status = document.getElementById("status");
+      var go = document.getElementById("go");
+      var pause = document.getElementById("pause");
 
-    var themeNames = {
-      "neon-blue": "Neon Blue",
-      "crimson": "Crimson",
-      "cyber-purple": "Cyberpunk Purple",
-      "emerald": "Emerald",
-      "sunset": "Sunset Orange",
-      "midnight-gold": "Midnight Gold",
-      "terminal": "Hacker Terminal",
-      "arctic": "Arctic Cyan",
-      "rose": "Rose Neon"
-    };
+      var secs = parseFloat(getComputedStyle(root).getPropertyValue("--secs")) || 5;
+      var remaining = secs * 1000;
+      var deadline, timer, paused = false;
 
-    document.getElementById("themeName").textContent =
-      "Theme: " + (themeNames[document.documentElement.getAttribute("data-theme")] || "");
+      // Keep the path, query and hash. Only the host changes.
+      var target = "https://habibullah.dev" +
+        location.pathname.replace(/\/index\.html$/, "/") + location.search + location.hash;
+      go.href = target;
 
-    var extra = location.pathname.replace(/^\/+$/, "") + location.search + location.hash;
-    if (extra) {
-      TARGET_URL = "https://habibullah.dev" + (extra.charAt(0) === "/" ? "" : "/") + extra;
-      document.getElementById("go").href = TARGET_URL;
-    }
+      document.getElementById("themeName").textContent = "Theme: " + root.getAttribute("data-theme");
 
-    function redirect() {
-      window.location.replace(TARGET_URL);
-    }
+      // replace() keeps this page out of history, so Back never lands in a redirect loop.
+      function leave() { location.replace(target); }
 
-    document.getElementById("go").addEventListener("click", function (e) {
-      e.preventDefault();
-      redirect();
-    });
-
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        bar.style.strokeDashoffset = CIRC * (1 / TOTAL);
-      });
-    });
-
-    var timer = setInterval(function () {
-      left--;
-      num.textContent = Math.max(left, 0);
-      bar.style.strokeDashoffset = CIRC * ((TOTAL - left + 1) / TOTAL);
-
-      if (left <= 0) {
-        clearInterval(timer);
-        redirect();
+      function tick() {
+        remaining = deadline - performance.now();
+        if (remaining <= 0) { clearInterval(timer); leave(); return; }
+        var s = String(Math.ceil(remaining / 1000));
+        if (num.textContent !== s) num.textContent = s;
       }
-    }, 1000);
+
+      function run() {
+        deadline = performance.now() + remaining;
+        timer = setInterval(tick, 100);
+      }
+
+      go.addEventListener("click", function (e) {
+        if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        leave();
+      });
+
+      pause.addEventListener("click", function () {
+        paused = !paused;
+        if (paused) {
+          clearInterval(timer);
+          remaining = Math.max(deadline - performance.now(), 0);
+        } else {
+          run();
+        }
+        root.classList.toggle("paused", paused);
+        pause.textContent = paused ? "Resume" : "Pause";
+        status.textContent = paused ? "Countdown paused." : "Countdown resumed.";
+      });
+
+      run();
+    })();
   </script>
 </body>
 </html>
