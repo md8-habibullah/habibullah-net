@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>habibullah.net has moved to habibullah.dev</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://habibullah.dev/" />
+  <meta http-equiv="refresh" content="5;url=https://habibullah.dev/" />
+
+  <script>
+    (function () {
+      var themes = [
+        {
+          name: "Neon Blue",
+          value: "neon-blue",
+          vars: {
+            "--bg": "#07101f",
+            "--bg-2": "#0d1b33",
+            "--card": "rgba(255,255,255,.04)",
+            "--border": "rgba(80,160,255,.35)",
+            "--accent": "#3da5ff",
+            "--accent-2": "#7cc4ff",
+            "--on-accent": "#04101f",
+            "--text": "#e8f1ff",
+            "--muted": "#8da4c4"
+          }
+        },
+        {
+          name: "Crimson",
+          value: "crimson",
+          vars: {
+            "--bg": "#14060a",
+            "--bg-2": "#2a0b14",
+            "--card": "rgba(255,255,255,.04)",
+            "--border": "rgba(255,70,95,.38)",
+            "--accent": "#ff3b5c",
+            "--accent-2": "#ff8fa3",
+            "--on-accent": "#1a0207",
+            "--text": "#ffeaee",
+            "--muted": "#c79099"
+          }
+        },
+        {
+          name: "Cyber Purple",
+          value: "cyber-purple",
+          vars: {
+            "--bg": "#0e0720",
+            "--bg-2": "#1e0f3d",
+            "--card": "rgba(255,255,255,.04)",
+            "--border": "rgba(180,110,255,.4)",
+            "--accent": "#b46bff",
+            "--accent-2": "#e0b3ff",
+            "--on-accent": "#10051f",
+            "--text": "#f4eaff",
+            "--muted": "#a995c8"
+          }
+        },
+        {
+          name: "Emerald",
+          value: "emerald",
+          vars: {
+            "--bg": "#04120d",
+            "--bg-2": "#0a2a1e",
+            "--card": "rgba(255,255,255,.04)",
+            "--border": "rgba(40,220,150,.38)",
+            "--accent": "#22d98f",
+            "--accent-2": "#8af0c3",
+            "--on-accent": "#03140d",
+            "--text": "#e6fff4",
+            "--muted": "#86b5a0"
+          }
+        },
+        {
+          name: "Sunset Orange",
+          value: "sunset",
+          vars: {
+            "--bg": "#160a04",
+            "--bg-2": "#2e1508",
+            "--card": "rgba(255,255,255,.04)",
+            "--border": "rgba(255,140,50,.4)",
+            "--accent": "#ff8a2b",
+            "--accent-2": "#ffc08a",
+            "--on-accent": "#1c0c02",
+            "--text": "#fff1e4",
+            "--muted": "#c9a187"
+          }
+        },
+        {
+          name: "Midnight Gold",
+          value: "midnight-gold",
+          vars: {
+            "--bg": "#0a0a0f",
+            "--bg-2": "#171722",
+            "--card": "rgba(255,255,255,.04)",
+            "--border": "rgba(235,190,70,.4)",
+            "--accent": "#ebbe46",
+            "--accent-2": "#f6dc94",
+            "--on-accent": "#14110a",
+            "--text": "#fbf5e3",
+            "--muted": "#b0a88e"
+          }
+        },
+        {
+          name: "Terminal",
+          value: "terminal",
+          vars: {
+            "--bg": "#020802",
+            "--bg-2": "#06140a",
+            "--card": "rgba(255,255,255,.04)",
+            "--border": "rgba(0,255,90,.45)",
+            "--accent": "#00ff5a",
+            "--accent-2": "#7dffa8",
+            "--on-accent": "#021205",
+            "--text": "#c8ffd8",
+            "--muted": "#4fa56c"
+          }
+        },
+        {
+          name: "Arctic Cyan",
+          value: "arctic",
+          vars: {
+            "--bg": "#04141a",
+            "--bg-2": "#0a2c38",
+            "--card": "rgba(255,255,255,.04)",
+            "--border": "rgba(60,230,240,.4)",
+            "--accent": "#2fe3ee",
+            "--accent-2": "#92f4f9",
+            "--on-accent": "#03181c",
+            "--text": "#e4fcff",
+            "--muted": "#84b3ba"
+          }
+        },
+        {
+          name: "Rose Neon",
+          value: "rose",
+          vars: {
+            "--bg": "#150812",
+            "--bg-2": "#2c1026",
+            "--card": "rgba(255,255,255,.04)",
+            "--border": "rgba(255,100,200,.4)",
+            "--accent": "#ff62c4",
+            "--accent-2": "#ffa8e0",
+            "--on-accent": "#1c0616",
+            "--text": "#ffeaf7",
+            "--muted": "#c394b4"
+          }
+        }
+      ];
+
+      var selected = themes[Math.floor(Math.random() * themes.length)];
+      var root = document.documentElement;
+      root.setAttribute("data-theme", selected.value);
+
+      Object.keys(selected.vars).forEach(function (key) {
+        root.style.setProperty(key, selected.vars[key]);
+      });
+    })();
+  </script>
+
+  <style>
+    :root {
+      --bg: #07101f;
+      --bg-2: #0d1b33;
+      --card: rgba(255,255,255,.04);
+      --border: rgba(80,160,255,.35);
+      --accent: #3da5ff;
+      --accent-2: #7cc4ff;
+      --on-accent: #04101f;
+      --text: #e8f1ff;
+      --muted: #8da4c4;
+      --font: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    [data-theme="terminal"] {
+      --font: ui-monospace, "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      background: radial-gradient(ellipse at 50% 0%, var(--bg-2) 0%, var(--bg) 65%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 500px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 34px 30px 26px;
+      text-align: center;
+      box-shadow: 0 0 60px -22px var(--accent);
+      animation: rise .6s ease-out both;
+      backdrop-filter: blur(4px);
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    h1 .old {
+      color: var(--muted);
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+    }
+
+    h1 .new {
+      color: var(--accent);
+    }
+
+    .sub {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .ring {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: 28px auto 22px;
+    }
+
+    .ring svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .ring circle {
+      fill: none;
+      stroke-width: 7;
+    }
+
+    .ring .track {
+      stroke: rgba(255,255,255,.08);
+    }
+
+    .ring .bar {
+      stroke: var(--accent);
+      stroke-linecap: round;
+      stroke-dasharray: 339.29;
+      stroke-dashoffset: 0;
+      filter: drop-shadow(0 0 6px var(--accent));
+      transition: stroke-dashoffset 1s linear;
+    }
+
+    .count {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .count b {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .count span {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .badge {
+      display: inline-block;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      color: var(--accent-2);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: .83rem;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+
+    .btn {
+      display: block;
+      margin: 20px auto 0;
+      width: 100%;
+      padding: 14px 18px;
+      border: 0;
+      border-radius: 12px;
+      background: var(--accent);
+      color: var(--on-accent);
+      font: inherit;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px -8px var(--accent);
+    }
+
+    .btn:focus-visible,
+    .notice a:focus-visible {
+      outline: 3px solid var(--accent-2);
+      outline-offset: 3px;
+    }
+
+    .notice {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .notice a {
+      color: var(--accent-2);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px dashed var(--accent-2);
+    }
+
+    .theme-name {
+      margin-top: 14px;
+      font-size: .75rem;
+      color: var(--muted);
+      opacity: .75;
+      letter-spacing: .02em;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card { animation: none; }
+      .ring .bar { transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <h1><span class="old">habibullah.net</span><br>is now <span class="new">habibullah.dev</span></h1>
+    <p class="sub">You’re being taken to the new address.</p>
+
+    <div class="ring" role="timer" aria-live="polite" aria-label="Redirect countdown">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle class="track" cx="60" cy="60" r="54"></circle>
+        <circle class="bar" id="bar" cx="60" cy="60" r="54"></circle>
+      </svg>
+      <div class="count">
+        <b id="num">5</b>
+        <span>seconds</span>
+      </div>
+    </div>
+
+    <span class="badge">Full ownership with habibullah.dev · 301 permanent redirect</span>
+
+    <a class="btn" id="go" href="https://habibullah.dev/">Go to habibullah.dev now</a>
+
+    <p class="notice">
+      habibullah.net is an extra domain I bought to protect my brand.
+      If you have a real need for it, tell me why at
+      <a href="mailto:hey@habibullah.dev">hey@habibullah.dev</a>.
+    </p>
+
+    <p class="theme-name" id="themeName"></p>
+
+    <noscript>
+      <p class="notice">
+        JavaScript is off. You’ll be redirected in 5 seconds, or
+        <a href="https://habibullah.dev/">continue now</a>.
+      </p>
+    </noscript>
+  </main>
+
+  <script>
+    var TOTAL = 5;
+    var left = TOTAL;
+    var num = document.getElementById("num");
+    var bar = document.getElementById("bar");
+    var CIRC = 2 * Math.PI * 54;
+    var TARGET_URL = "https://habibullah.dev/";
+
+    var themeNames = {
+      "neon-blue": "Neon Blue",
+      "crimson": "Crimson",
+      "cyber-purple": "Cyberpunk Purple",
+      "emerald": "Emerald",
+      "sunset": "Sunset Orange",
+      "midnight-gold": "Midnight Gold",
+      "terminal": "Hacker Terminal",
+      "arctic": "Arctic Cyan",
+      "rose": "Rose Neon"
+    };
+
+    document.getElementById("themeName").textContent =
+      "Theme: " + (themeNames[document.documentElement.getAttribute("data-theme")] || "");
+
+    var extra = location.pathname.replace(/^\/+$/, "") + location.search + location.hash;
+    if (extra) {
+      TARGET_URL = "https://habibullah.dev" + (extra.charAt(0) === "/" ? "" : "/") + extra;
+      document.getElementById("go").href = TARGET_URL;
+    }
+
+    function redirect() {
+      window.location.replace(TARGET_URL);
+    }
+
+    document.getElementById("go").addEventListener("click", function (e) {
+      e.preventDefault();
+      redirect();
+    });
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        bar.style.strokeDashoffset = CIRC * (1 / TOTAL);
+      });
+    });
+
+    var timer = setInterval(function () {
+      left--;
+      num.textContent = Math.max(left, 0);
+      bar.style.strokeDashoffset = CIRC * ((TOTAL - left + 1) / TOTAL);
+
+      if (left <= 0) {
+        clearInterval(timer);
+        redirect();
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
